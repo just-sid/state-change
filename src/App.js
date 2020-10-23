@@ -12,16 +12,23 @@ class App extends Component {
     };
   }
 
+
   randomChange = () => {
-    let newNum = Math.floor(Math.random() * 10);
+    let newNum = Math.floor(Math.random() * 10) + 1;
     this.setState({num: newNum});
+    if(newNum === 7)
+    this.setState({isSeven: true});
   }
+  
 
   render() {
     return (
       <div className="App">
         <Title num = {this.state.num} />
-        <button onClick = {this.randomChange}>Click me</button>
+        {this.state.isSeven 
+         ? <h2>YOU WIN!</h2>
+         : <button onClick = {this.randomChange}>Random Number</button>
+        }
       </div>
     );
   }
